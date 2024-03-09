@@ -12,6 +12,11 @@
     color: #fff;
     font-family: Arial, sans-serif;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
   }
 
   h1, p {
@@ -39,14 +44,19 @@
     position: absolute;
     width: 10px;
     height: 10px;
-    background-color: #ff00ff; /* Sākotnējā krāsa, tiek mainīta ar JavaScript */
-    border-radius: 50%;
+    background-color: #ff00ff; /* Sākotnēji vienkrāsains, bet tas tiks mainīts ar JavaScript */
     animation: confetti-fall linear 5s infinite;
   }
 
   @keyframes confetti-fall {
-    0% { transform: translate(0, -100vh); }
-    100% { transform: translate(100vw, 100vh); }
+    0% { 
+      transform: translateY(-100vh) rotate(0deg); /* Sākotnējā pozīcija - ārpus ekrāna un rotācija 0 grādi */
+      opacity: 0; /* Sākotnēji neesot redzams */
+    }
+    100% { 
+      transform: translateY(100vh) rotate(720deg); /* Beigu pozīcija - zem ekrāna un rotācija 720 grādi */
+      opacity: 1; /* Beigu stāvoklis - redzams */
+    }
   }
 </style>
 </head>
@@ -56,7 +66,7 @@
 
 <button onclick="showGrandSurprise()">Parādīt grandiozo pārsteigumu</button>
 
-<div id="grandSurprise" style="display: none; position: relative;">
+<div id="grandSurprise" style="display: none;">
   <p>Sveika, Anna!</p>
   <p>Šodien ir tavs dzimšanas diena!</p>
   <p>Šī diena ir tik īpaša, ka pat zvaigznes ir ienākušas mūsu pasaulē, lai priecātos kopā ar tevi!</p>
@@ -69,15 +79,23 @@
       const container = document.getElementById("grandSurprise");
       const audio = document.getElementById("happyBirthdayAudio");
       audio.play();
-      const colors = ['#ff00ff', '#00ff00', '#ffff00', '#00ffff', '#ff0000', '#0000ff']; // Dažādu krāsu saraksts
       for (let i = 0; i < 100; i++) {
         const confetti = document.createElement("div");
         confetti.classList.add("confetti");
         confetti.style.left = Math.random() * window.innerWidth + "px";
+        confetti.style.backgroundColor = getRandomColor(); /* Izvēlēties gadījuma krāsu */
         confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]; // Iestatīt konfetes krāsu
         container.appendChild(confetti);
       }
+    }
+
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
     }
   </script>
 </div>
