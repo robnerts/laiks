@@ -6,7 +6,7 @@
 <title>Grandiozs dzimšanas dienas pārsteigums Annai!</title>
 <style>
   body {
-    background-image: url('https://images.unsplash.com/photo-1491947153227-19f17a535133');
+    background-image: url('https://images.unsplash.com/photo-1560448202-132167ce633c');
     background-size: cover;
     background-position: center;
     color: #fff;
@@ -39,7 +39,8 @@
     position: absolute;
     width: 10px;
     height: 10px;
-    background-color: #ff00ff;
+    background-color: #ff00ff; /* Sākotnējā krāsa, tiek mainīta ar JavaScript */
+    border-radius: 50%;
     animation: confetti-fall linear 5s infinite;
   }
 
@@ -68,11 +69,13 @@
       const container = document.getElementById("grandSurprise");
       const audio = document.getElementById("happyBirthdayAudio");
       audio.play();
+      const colors = ['#ff00ff', '#00ff00', '#ffff00', '#00ffff', '#ff0000', '#0000ff']; // Dažādu krāsu saraksts
       for (let i = 0; i < 100; i++) {
         const confetti = document.createElement("div");
         confetti.classList.add("confetti");
         confetti.style.left = Math.random() * window.innerWidth + "px";
         confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]; // Iestatīt konfetes krāsu
         container.appendChild(confetti);
       }
     }
