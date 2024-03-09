@@ -13,6 +13,7 @@
     font-family: Arial, sans-serif;
     overflow: hidden;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -21,6 +22,7 @@
 
   h1, p {
     text-align: center;
+    z-index: 1;
   }
 
   button {
@@ -31,9 +33,8 @@
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
-    display: block;
-    margin: 20px auto;
     transition: background-color 0.3s;
+    z-index: 1;
   }
 
   button:hover {
@@ -46,6 +47,7 @@
     height: 10px;
     background-color: #ff00ff; /* Sākotnēji vienkrāsains, bet tas tiks mainīts ar JavaScript */
     animation: confetti-fall linear 5s infinite;
+    z-index: 0; /* Konfeti zemākais slānis */
   }
 
   @keyframes confetti-fall {
@@ -66,7 +68,7 @@
 
 <button onclick="showGrandSurprise()">Parādīt grandiozo pārsteigumu</button>
 
-<div id="grandSurprise" style="display: none;">
+<div id="grandSurprise" style="position: relative;">
   <p>Sveika, Anna!</p>
   <p>Šodien ir tavs dzimšanas diena!</p>
   <p>Šī diena ir tik īpaša, ka pat zvaigznes ir ienākušas mūsu pasaulē, lai priecātos kopā ar tevi!</p>
