@@ -12,15 +12,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
     <body>
 
         <p>Apreiķināt cik daudz informācijas var lejupielādēt</p>
-        <p> <input type="number" id="numberInput" min="0">sekundēs, ja interneta ātrums ir 25 Mbs</p>
-        <p> <button onclick="multiplyBy25()">Pārveidot</button> </p>
-        <label class="radio-label">
-            <input type="radio" name="factor" value="976.562"> Kib
-          </label>
-          <label class="radio-label">
-            <input type="radio" name="factor" value="1000"> Kb
-        </label>
-        <p> <div id="result"></div> </p>
+        <p><input type="number" id="numberInput">sekundēs, ja interneta ātrums ir 25Mbs</p>
+            <p><div class="button-container">
+                    <button onclick="multiplyByFactor(25)">Pārveidot</button>
+            </div></p>
+            <p><div class="radio-container">
+                    <label class="radio-label">
+                    <input type="radio" name="factor" value="967,562"> Kib
+                    </label>
+                    <label class="radio-label">
+                    <input type="radio" name="factor" value="1000"> Kb
+                    </label>
+            </div></p>
+            <p><div id="result"></div></p>
     
 <script>
     const radios = document.querySelectorAll('input[type="radio"]');
