@@ -9,7 +9,7 @@
     background-image: url('https://images.unsplash.com/photo-1560448202-132167ce633c');
     background-size: cover;
     background-position: center;
-    color: #000; /* Mainīt teksta krāsu uz melnu */
+    color: #fff;
     font-family: Arial, sans-serif;
     overflow: hidden;
     display: flex;
@@ -22,6 +22,7 @@
 
   h1, p {
     text-align: center;
+    z-index: 1;
   }
 
   button {
@@ -33,6 +34,7 @@
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
+    z-index: 1;
   }
 
   button:hover {
@@ -41,10 +43,9 @@
 
   .confetti {
     position: absolute;
-    width: 20px; /* Palielinām konfeti izmēru */
-    height: 20px; /* Palielinām konfeti izmēru */
-    border-radius: 50%; /* Veidojam konfeti par apaļu figūru */
-    background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red); /* Izmantojam varavīksnes krāsas */
+    width: 10px;
+    height: 10px;
+    background-color: #ff00ff; /* Sākotnēji vienkrāsains, bet tas tiks mainīts ar JavaScript */
     animation: confetti-fall linear 5s infinite;
     z-index: 0; /* Konfeti zemākais slānis */
   }
@@ -80,13 +81,24 @@
       const container = document.getElementById("grandSurprise");
       const audio = document.getElementById("happyBirthdayAudio");
       audio.play();
-      for (let i = 0; i < 500; i++) { /* Palielinām konfeti skaitu */
+      for (let i = 0; i < 100; i++) {
         const confetti = document.createElement("div");
         confetti.classList.add("confetti");
         confetti.style.left = Math.random() * window.innerWidth + "px";
+        confetti.style.top = Math.random() * window.innerHeight + "px"; /* Pievienots top stils */
+        confetti.style.backgroundColor = getRandomColor(); /* Izvēlēties gadījuma krāsu */
         confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
         container.appendChild(confetti);
       }
+    }
+
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
     }
   </script>
 </div>
