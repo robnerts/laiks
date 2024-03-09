@@ -1,25 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pārsteiguma dzimšanas dienas apsveikums</title>
+<style>
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #f00;
+    animation: confetti-fall linear 5s infinite;
+  }
+  
+  @keyframes confetti-fall {
+    0% { transform: translate(0, -100vh); }
+    100% { transform: translate(100vw, 100vh); }
+  }
+</style>
+</head>
 <body>
-<script>
-function maksa(){
-	let dz = document.getElementsByTagName('input');
-    let sum=0;
-    for(i = 0; i < dz.length-1; i++) {
-       if(dz[i].checked) sum+=Number(dz[i].value);
+
+<h1>Dzimšanas dienas pārsteiguma apsveikums Annai!</h1>
+
+<button onclick="showSurprise()">Parādīt pārsteigumu</button>
+
+<div id="surprise" style="display: none; position: relative;">
+  <p>Sveika, Anna!</p>
+  <p>Šodien ir tavs dzimšanas diena!</p>
+  <p>Novēlu tev visu labāko!</p>
+  <p>🎉🎈🎂</p>
+  <script>
+    function showSurprise() {
+      document.getElementById("surprise").style.display = "block";
+      const container = document.getElementById("surprise");
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * window.innerWidth + "px";
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        container.appendChild(confetti);
+      }
     }
-    document.getElementById("maksa").innerHTML="Jāmaksā "+sum;
- }   
-</script>
-<p id="maksa"></p>
-<form>
-  <input type="checkbox" id="kafija" name="kafija" value="3.60">
-  <label for="kafija">kafija</label><br>
-  <input type="checkbox" id="sula"  name="sula" value="2.50">
-  <label for="sula">sula</label><br>
-  <input type="checkbox" id="kakao" name="kakao" value="3.20">
-  <label for="kakao">kakao</label><br><br>
-  <input type="button" id="poga" value="jāmaksā" onclick="maksa()">
-</form> 
+  </script>
+</div>
+
 </body>
 </html>
