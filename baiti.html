@@ -21,22 +21,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
             <input type="radio" name="factor" value="1000"> Kb
         </label>
         <p> <div id="result"></div> </p>
-        
-        <script>
-            const radios = document.querySelectorAll('input[type="radio"]');
-            radios.forEach(radio => {
-              radio.addEventListener('change', () => {
-                const selectedFactor = parseFloat(document.querySelector('input[name="factor"]:checked').value);
-                multiplyByFactor(selectedFactor);
-              });
-            });
-          
-            function multiplyByFactor(factor) {
-              const input = document.getElementById('numberInput').value;
-              const result = input * factor;
-              document.getElementById('result').innerHTML = 'Rezultāts: ' + result;
-            }
-        </script>
+    
+<script>
+    const radios = document.querySelectorAll('input[type="radio"]');
+    radios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        const selectedFactor = parseFloat(document.querySelector('input[name="factor"]:checked').value);
+        multiplyByFactor(selectedFactor);
+      });
+    });
+  
+    function multiplyByFactor(factor) {
+      let input = document.getElementById('numberInput').value;
+      const result = input * factor;
+      document.getElementById('result').innerHTML = 'Rezultāts: ' + result;
+    }
+  </script>
 
     </body>
 </html>
