@@ -14,12 +14,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
         <p>Apreiķināt cik daudz informācijas var lejupielādēt</p>
         <p> <input type="number" id="numberInput" min="0">sekundēs, ja interneta ātrums ir 25 Mbs</p>
         <p> <button onclick="multiplyBy25()">Pārveidot</button> </p>
+        <label class="radio-label">
+            <input type="radio" name="factor" value="976.562"> Kib
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="factor" value="1000"> Kb
+        </label>
         <p> <div id="result"></div> </p>
         
         <script>
-            function multiplyBy25() {
-              var input = document.getElementById('numberInput').value;
-              var result = input * 25;
+            const radios = document.querySelectorAll('input[type="radio"]');
+            radios.forEach(radio => {
+              radio.addEventListener('change', () => {
+                const selectedFactor = parseFloat(document.querySelector('input[name="factor"]:checked').value);
+                multiplyByFactor(selectedFactor);
+              });
+            });
+          
+            function multiplyByFactor(factor) {
+              const input = document.getElementById('numberInput').value;
+              const result = input * factor;
               document.getElementById('result').innerHTML = 'Rezultāts: ' + result;
             }
         </script>
