@@ -11,10 +11,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
     </head>
     <body>
         <p>Apreiķināt cik daudz informācijas var lejupielādēt</p>
-        <div><input type="number" id="sek" name="sekundes" min="0" required>sekundēs, ja interneta ātrums ir 25 Mbs</div>
-        <button type="button" onclick="rez=sek*25">Pārvērst</button>
+        <input type="number" id="numberInput" placeholder="sekundes">sekundēs, ja interneta ātrums ir 25 Mbs
+        <button onclick="multiplyBy25()">Pārveidot</button>
        
-        <div><input name="rez"></div> <input type="radio" id="Kib" name="mervieniba" value="Kib"> <input type="radio" id="Kb" name="mervieniba" value="Kb">
+        <div><input name="rez"></div>  
+
+        <input type="radio" id="Kib" name="mervieniba" value="Kib">
+        <input type="radio" id="Kb" name="mervieniba" value="Kb">
             
     </body>
 </html>
