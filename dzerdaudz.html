@@ -1,40 +1,27 @@
-<!DOCTYPE html>
-<html lang="lv">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pārsteiguma dzimšanas dienas apsveikums</title>
-<style>
-  .confetti {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: #f00;
-    animation: confetti-fall linear 5s infinite;
-  }
-  
-  @keyframes confetti-fall {
-    0% { transform: translate(0, -100vh); }
-    100% { transform: translate(100vw, 100vh); }
+0% { transform: translate(100vw, 100vh); }
   }
 </style>
 </head>
 <body>
 
-<h1>Dzimšanas dienas pārsteiguma apsveikums Annai!</h1>
+<h1>Dzimšanas dienas grandiozais pārsteigums Annai!</h1>
 
-<button onclick="showSurprise()">Parādīt pārsteigumu</button>
+<button onclick="showGrandSurprise()">Parādīt grandiozo pārsteigumu</button>
 
-<div id="surprise" style="display: none; position: relative;">
+<div id="grandSurprise" style="display: none; position: relative;">
   <p>Sveika, Anna!</p>
   <p>Šodien ir tavs dzimšanas diena!</p>
+  <p>Šī diena ir tik īpaša, ka pat zvaigznes ir ienākušas mūsu pasaulē, lai priecātos kopā ar tevi!</p>
   <p>Novēlu tev visu labāko!</p>
-  <p>🎉🎈🎂</p>
+  <p>🌟🎉🎁</p>
+  <audio id="happyBirthdayAudio" src="https://www.soundjay.com/button/beep-07.wav"></audio>
   <script>
-    function showSurprise() {
-      document.getElementById("surprise").style.display = "block";
-      const container = document.getElementById("surprise");
-      for (let i = 0; i < 50; i++) {
+    function showGrandSurprise() {
+      document.getElementById("grandSurprise").style.display = "block";
+      const container = document.getElementById("grandSurprise");
+      const audio = document.getElementById("happyBirthdayAudio");
+      audio.play();
+      for (let i = 0; i < 100; i++) {
         const confetti = document.createElement("div");
         confetti.classList.add("confetti");
         confetti.style.left = Math.random() * window.innerWidth + "px";
