@@ -10,13 +10,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+
         <p>Apreiķināt cik daudz informācijas var lejupielādēt</p>
         <input type="number" id="numberInput" placeholder="sekundes">sekundēs, ja interneta ātrums ir 25 Mbs
         <button onclick="multiplyBy25()">Pārveidot</button>
-        <div id="result"></div>
-
-        <input type="radio" id="Kib" name="mervieniba" value="Kib">
-        <input type="radio" id="Kb" name="mervieniba" value="Kb">
-            
+        <div id="result"></div> 
+        
+        <script>
+            function multiplyBy25() {
+              var input = document.getElementById('numberInput').value;
+              var result = input * 25;
+              document.getElementById('result').innerHTML = 'Rezultāts: ' + result;
+            }
+          </script>
+          
     </body>
 </html>
